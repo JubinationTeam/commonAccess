@@ -51,7 +51,7 @@ var dataAccessInitModel={
 
 const urls={
 //    'guard':'http://localhost/',
-    'guard':'https://aqueous-atoll-17166.herokuapp.com/'
+    'guard':'https://aqueous-atoll-17166.herokuapp.com/',
     'aws':'http://139.59.39.95',
     'thyrocareService':{
 //        'postOrder':'http://localhost:8443/'
