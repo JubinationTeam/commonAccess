@@ -14,9 +14,9 @@ var vendorManager=require('./service/modules/vendor/vendorManager.js').init;
 //module services
 var guardService=require('./service/modules/guard.js').init
 var awsService=require('./service/modules/aws.js').init
+var userAccountService=require('./service/modules/userAccount.js').init
 var parserService=require('./service/modules/parser.js').init
 var thyrocareService=require('./service/modules/vendor/thyrocare/thyrocareServices.js').init
-var userAccountService=require('./service/modules/userAccount.js').init
 
 //global event emitter
 const EventEmitter = require('events');
