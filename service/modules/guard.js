@@ -52,7 +52,6 @@ function accessGuard(model){
                                 break;
         case "delete"       :   urlSent=url+'/user/delete/'
                                 break;
-            
         default             :   model.info="Valid operations are create, read, update and delete"
                                 model.emit(callbackRouter,model)
                                 break;
