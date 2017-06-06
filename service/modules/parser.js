@@ -40,8 +40,8 @@ function parserFactory(model){
 
 function parserRequestFunction(model){
     
-    
-    switch(model.req.body.vendor){
+    console.log("PARSER COMMON ACCESS")
+    switch(model.req.body.mod){
             
         case "parser" :   firstThyrocareParserRequest(model);
                           console.log("FIRST THYROCARE REQUEST")
