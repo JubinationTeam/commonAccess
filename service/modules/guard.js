@@ -59,7 +59,7 @@ function accessGuard(model){
     }
     
     var options     = {
-                            url     : urlSent,
+                            url     : 'https://damp-ravine-24599.herokuapp.com/user/create/',
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
