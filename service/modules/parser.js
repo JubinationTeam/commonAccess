@@ -44,7 +44,7 @@ function parserRequestFunction(model){
     switch(model.req.body.vendor){
             
         case "parser" :   firstThyrocareParserRequest(model);
-                          
+                          console.log("FIRST THYROCARE REQUEST")
                           break;
 
         default       :   model.info="Invalid Parser Vendor Name"
@@ -61,6 +61,9 @@ function firstThyrocareParserRequest(model){
                                 reportUrl:model.req.body.data.thyrocarePdfUrl,
                                 reportXml:model.req.body.data.thyrocareXmlUrl 
                             }
+     
+     console.log(body)
+     
     var options  = {            url     : url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+req.body.data.leadId,
                                 method  : 'POST',
                                 headers : headers,
@@ -71,6 +74,7 @@ function firstThyrocareParserRequest(model){
             if (body){
                     if(body.body=="success"){
                         model.info=JSON.parse(body);
+                        console.log(JSON.parse(body)+"________")
                         secondThyrocareParserRequest(model)
     //                    global.emit(callbackRouter,model)
                     }
@@ -105,14 +109,15 @@ function secondThyrocareParserRequest(model){
 
     request(options, function (error, response, body){
             if (body&&response.status==200){
-                    if(body.body=="success"){
+//                    if(body.body=="success"){
                         model.info=JSON.parse(body);
+                        console.log(JSON.parse(body)+"PPPPPPPPPPPPPP")
                         global.emit(callbackRouter,model)
-                    }
-                    else{
-                        model.info=JSON.parse(body);
-                        global.emit(callbackRouter,model)
-                    }
+//                    }
+//                    else{
+//                        model.info=JSON.parse(body);
+//                        global.emit(callbackRouter,model)
+//                    }
             }
             else if(response){
                     model.info={error:response,

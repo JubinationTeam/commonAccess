@@ -48,6 +48,7 @@ function filterModuleAccessRequest(model){
             
                 case "parser"       :   global.emit("parser",model)
                                         model.emit("parserService",model)
+                                        console.log("IM IN PARSER")
                                         break;
             
                 case "userAccount"  :   global.emit("userAccount",model)
