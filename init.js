@@ -52,7 +52,7 @@ var dataAccessInitModel={
     };
 
 const urls={
-    'guard':' https://mysterious-garden-59970.herokuapp.com/',
+    'guard':'https://mysterious-garden-59970.herokuapp.com/',
     'aws':'http://139.59.39.95',
     'parser':'http://35.154.233.231/Parser',
     'vendor':{
@@ -70,8 +70,7 @@ function init(){
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
     parserService(globalEmitter,'parser','callbackRouter',urls.parser)
     thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
-    userAccountService(globalEmitter,'userAccount','callbackRouter')
-    
+    userAccountService(globalEmitter,'userAccount','callbackRouter')   
 }
 
 //exports
