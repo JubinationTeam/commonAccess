@@ -57,6 +57,8 @@ function parserRequestFunction(model){
 
 function firstThyrocareParserRequest(model){
     
+    console.log(model.req.body.data)
+    
      var body={
                                 reportUrl:model.req.body.data.thyrocarePdfUrl,
                                 reportXml:model.req.body.data.thyrocareXmlUrl 
