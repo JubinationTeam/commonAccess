@@ -51,7 +51,7 @@ function accessGuard(model){
                                 callGuard(model);
                                 break;
         default             :   model.info="Valid operations are create, read, update and delete"
-                                model.emit(callbackRouter,model)
+                                global.emit(callbackRouter,model)
                                 break;
     }
     
@@ -75,24 +75,21 @@ function callGuard(model){
         
              if (body){
                     model.info=JSON.parse(body);
-                    global.emit(callbackRouter,model)
             }
             else if(response){
                      console.log(urlSent+"response")
                     model.info={error:response,
                                 place:"Common Access Gaurd"}
-                    global.emit(callbackRouter,model)
             }
             else if(error){
                      console.log(urlSent)
                     model.info={error:error,
                                 place:"Common Access Gaurd"}
-                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [The Guard] : Common Access"};
-                    global.emit(callbackRouter,model)
             }
+            global.emit(callbackRouter,model)
         }) 
 }
 

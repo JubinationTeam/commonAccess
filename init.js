@@ -52,7 +52,7 @@ var dataAccessInitModel={
     };
 
 const urls={
-    'guard':'https://damp-ravine-24599.herokuapp.com',
+    'guard':' https://mysterious-garden-59970.herokuapp.com/',
     'aws':'http://139.59.39.95',
     'parser':'http://35.154.233.231/Parser',
     'vendor':{
