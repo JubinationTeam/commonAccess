@@ -74,7 +74,13 @@ function callGuard(model){
     request(options, function (error, response, body){
         
              if (body){
+                 console.log(body);
+                 try{
                     model.info=JSON.parse(body);
+                 }
+                 catch(e){
+                     console.log(e)
+                 }
             }
             else if(response){
                      console.log(urlSent+"response")
