@@ -60,6 +60,7 @@ function accessGuard(model){
 
 
 function callGuard(model){
+    console.log(model.url+":::::::::::::::::::::::::::::::")
      var options     = {
                             url     : model.url,
                             method  : 'POST',
