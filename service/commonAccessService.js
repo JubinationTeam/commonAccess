@@ -34,21 +34,29 @@ function setup(model)
 function filterModuleAccessRequest(model){
     switch(model.req.body.mod)
             {
-                case "guard"    :   global.emit("guard",model)
-                                    model.emit("guardService",model)
-                                    break;
+                case "guard"        :   global.emit("guard",model)
+                                        model.emit("guardService",model)
+                                        break;
 
-                case "vendor"   :   global.emit("vendor",model)
-                                    model.emit("vendorService",model)
-                                    break;
+                case "vendor"       :   global.emit("vendor",model)
+                                        model.emit("vendorService",model)
+                                        break;
                                 
-                case "aws"      :   global.emit("aws",model)
-                                    model.emit("awsService",model)
-                                    break;
+                case "aws"          :   global.emit("aws",model)
+                                        model.emit("awsService",model)
+                                        break;
             
-                default         :   model.info={error:"Invalid Module Name - "+model.req.body.mod+": Common Access"}
-                                    global.emit(callbackRouter,model)
-                                    break;
+                case "parser"       :   global.emit("parser",model)
+                                        model.emit("parserService",model)
+                                        break;
+            
+                case "userAccount"  :   global.emit("userAccount",model)
+                                        model.emit("userAccountService",model)
+                                        break;
+            
+                default             :   model.info={error:"Invalid Module Name - "+model.req.body.mod+": Common Access"}
+                                        global.emit(callbackRouter,model)
+                                        break;
             }
     
 }

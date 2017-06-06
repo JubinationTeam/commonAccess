@@ -12,7 +12,7 @@ const callbackOperation="callbackOperation"
 var global;
 
 var callbackRouter;
-var url;
+var commonUrl;
 
 //request headers constant
 const headers     = {
@@ -21,45 +21,25 @@ const headers     = {
                 }
 
 // function to instantiate
-function init(globalEmitter,globalCall,callback,commonUrl){
+function init(globalEmitter,globalCall,callback){
     globalEmitter.on(globalCall,setup)
     global=globalEmitter;
     callbackRouter=callback;
-    url=commonUrl;
 }
 
 function setup(model)
 {
-    model.once("guardService",factory);
+    model.once("userAccountService",userAccountFactory);
 }
  
-function factory(model){
-    new accessGuard(model)
+function userAccountFactory(model){
+    new userAccountCall(model)
 }
 
-function accessGuard(model){
-    
-    var urlSent="";
-    
-        
-    switch(model.req.body.operation){
-            
-        case "create"       :   urlSent=url+'/user/create/'
-                                break;
-        case "read"         :   urlSent=url+'/user/read/'
-                                break;
-        case "update"       :   urlSent=url+'/user/update/'
-                                break;
-        case "delete"       :   urlSent=url+'/user/delete/'
-                                break;
-            
-        default             :   model.info="Valid operations are create, read, update and delete"
-                                model.emit(callbackRouter,model)
-                                break;
-    }
+function userAccountCall(model){
     
     var options     = {
-                            url     : urlSent,
+                            url     :'localhost:443/userAccount/',
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
@@ -75,16 +55,16 @@ function accessGuard(model){
             }
             else if(response){
                     model.info={error:response,
-                                place:"Common Access Gaurd"}
+                                place:"Common Access User Account"}
                     global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
-                                place:"Common Access Gaurd"}
+                                place:"Common Access User Account"}
                     global.emit(callbackRouter,model)
-            }
+            }      
             else{
-                    model.info={error:"Error in Common Access [The Guard] : Common Access"};
+                    model.info={error:"Error in Common Access [User Account] : Common Access"};
                     global.emit(callbackRouter,model)
             }
         }) 

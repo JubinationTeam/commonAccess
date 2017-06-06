@@ -12,7 +12,7 @@ const callbackOperation="callbackOperation"
 var global;
 
 var callbackRouter;
-var commonUrl;
+var url;
 
 //request headers constant
 const headers     = {
@@ -25,7 +25,7 @@ function init(globalEmitter,globalCall,callback,commonUrl){
     globalEmitter.on(globalCall,setup)
     global=globalEmitter;
     callbackRouter=callback;
-    commonUrl=commonUrl;
+    url=commonUrl;
 }
 
 function setup(model)
@@ -43,7 +43,7 @@ function awsRequestFunction(model){
     
     switch(model.req.body.operation){
             
-                case "awsQuery"         :   urlSent=commonUrl
+                case "awsQuery"         :   urlSent=commonUrl;
                                             break;
 
                 default                 :   model.info="Invalid AWS query Oeration Name"
@@ -51,7 +51,7 @@ function awsRequestFunction(model){
                                             break;
     }
     
-    var options  = {            url     : urlSent,
+    var options  = {            url     : url,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(model.req.body.data)

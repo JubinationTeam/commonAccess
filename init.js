@@ -14,7 +14,9 @@ var vendorManager=require('./service/modules/vendor/vendorManager.js').init;
 //module services
 var guardService=require('./service/modules/guard.js').init
 var awsService=require('./service/modules/aws.js').init
+var parserService=require('./service/modules/parser.js').init
 var thyrocareService=require('./service/modules/vendor/thyrocare/thyrocareServices.js').init
+var userAccountService=require('./service/modules/userAccount.js').init
 
 //global event emitter
 const EventEmitter = require('events');
@@ -50,12 +52,11 @@ var dataAccessInitModel={
     };
 
 const urls={
-//    'guard':'http://localhost/',
-    'guard':'https://aqueous-atoll-17166.herokuapp.com/',
+    'guard':'https://damp-ravine-24599.herokuapp.com',
     'aws':'http://139.59.39.95',
-    'thyrocareService':{
-//        'postOrder':'http://localhost:8443/'
-            'postOrder':'https://shrouded-everglades-23668.herokuapp.com/'
+    'parser':'http://35.154.233.231/Parser',
+    'vendor':{
+        'thyrocare':'https://shrouded-everglades-23668.herokuapp.com'
     }
 }
 
@@ -67,7 +68,9 @@ function init(){
     vendorManager(globalEmitter,'vendor','callbackRouter');
     guardService(globalEmitter,'guard','callbackRouter',urls.guard);
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
-    thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.thyrocareService)
+    parserService(globalEmitter,'parser','callbackRouter',urls.parser)
+    thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
+    userAccountService(globalEmitter,'userAccount','callbackRouter')
     
 }
 
