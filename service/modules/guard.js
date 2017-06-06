@@ -35,6 +35,7 @@ function setup(model)
 
 
 function accessGuard(model){
+    console.log("guard")
     switch(model.req.body.operation){
             
         case "create"       :   model.url=url+'/user/create/'
