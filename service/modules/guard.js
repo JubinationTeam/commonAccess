@@ -30,37 +30,38 @@ function init(globalEmitter,globalCall,callback,commonUrl){
 
 function setup(model)
 {
-    model.once("guardService",factory);
-}
- 
-function factory(model){
-    new accessGuard(model)
+    model.once("guardService",accessGuard);
 }
 
+
 function accessGuard(model){
-    
-    var urlSent="";
-    
-        
     switch(model.req.body.operation){
             
-        case "create"       :   urlSent=url+'/user/create/'
+        case "create"       :   model.url=url+'/user/create/'
+                                callGuard(model);
                                 break;
-        case "read"         :   urlSent=url+'/user/read/'
+        case "read"         :   model.url=url+'/user/read/'
+                                callGuard(model);
                                 break;
-        case "update"       :   urlSent=url+'/user/update/'
+        case "update"       :   model.url=url+'/user/update/'
+                                callGuard(model);
                                 break;
-        case "delete"       :   urlSent=url+'/user/delete/'
+        case "delete"       :   model.url=url+'/user/delete/'
+                                callGuard(model);
                                 break;
         default             :   model.info="Valid operations are create, read, update and delete"
                                 model.emit(callbackRouter,model)
                                 break;
     }
     
-   console.log(urlSent+"::::::::::::::::::::")
     
-    var options     = {
-                            url     : urlSent,
+   
+}
+
+
+function callGuard(model){
+     var options     = {
+                            url     : model.url,
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
