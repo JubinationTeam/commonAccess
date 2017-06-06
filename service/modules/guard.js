@@ -57,7 +57,7 @@ function accessGuard(model){
                                 break;
     }
     
-   
+   console.log(urlSent+"::::::::::::::::::::")
     
     var options     = {
                             url     : urlSent,
