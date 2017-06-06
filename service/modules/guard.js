@@ -44,7 +44,7 @@ function accessGuard(model){
         
     switch(model.req.body.operation){
             
-        case "create"       :   urlSent='https://damp-ravine-24599.herokuapp.com//user/create/'
+        case "create"       :   urlSent='https://damp-ravine-24599.herokuapp.com/user/create/'
                                 break;
         case "read"         :   urlSent=url+'/user/read/'
                                 break;
