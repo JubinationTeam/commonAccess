@@ -58,7 +58,7 @@ function accessGuard(model){
                                 break;
     }
     
-    console.log(urlSent)
+   
     
     var options     = {
                             url     : urlSent,
@@ -81,6 +81,7 @@ function accessGuard(model){
                     global.emit(callbackRouter,model)
             }
             else if(error){
+                     console.log(urlSent)
                     model.info={error:error,
                                 place:"Common Access Gaurd"}
                     global.emit(callbackRouter,model)
