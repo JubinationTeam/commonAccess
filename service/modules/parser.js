@@ -40,24 +40,28 @@ function parserFactory(model){
 
 function parserRequestFunction(model){
     
-    var urlSent="";
-    var body;
     
     switch(model.req.body.vendor){
             
-        case "parser" :   urlSent=url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+req.body.data.leadId;
-                          body={
-                                reportUrl:model.req.body.data.thyrocarePdfUrl,
-                                reportXml:model.req.body.data.thyrocareXmlUrl 
-                            }
+        case "parser" :   firstThyrocareParserRequest(model);
+                          
                           break;
 
         default       :   model.info="Invalid Parser Vendor Name"
-                          model.emit(callbackRouter,model)
+                          global.emit(callbackRouter,model)
                           break;
     }
     
-    var options  = {            url     : urlSent,
+}
+
+
+function firstThyrocareParserRequest(model){
+    
+     var body={
+                                reportUrl:model.req.body.data.thyrocarePdfUrl,
+                                reportXml:model.req.body.data.thyrocareXmlUrl 
+                            }
+    var options  = {            url     : url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+req.body.data.leadId,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(body)
@@ -90,8 +94,8 @@ function parserRequestFunction(model){
                     global.emit(callbackRouter,model)
             }
         })
-    
 }
+
 
 function secondThyrocareParserRequest(model){
     var options  = {            url     : url+"/report/json/"+model.req.body.data.mobile+"_"+req.body.data.leadId,

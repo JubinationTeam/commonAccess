@@ -21,10 +21,11 @@ const headers     = {
                 }
 
 // function to instantiate
-function init(globalEmitter,globalCall,callback){
+function init(globalEmitter,globalCall,callback,url){
     globalEmitter.on(globalCall,setup)
     global=globalEmitter;
     callbackRouter=callback;
+    commonUrl=url
 }
 
 function setup(model)
@@ -39,7 +40,7 @@ function userAccountFactory(model){
 function userAccountCall(model){
     
     var options     = {
-                            url     :'localhost:443/userAccount/',
+                            url     : commonUrl+'/userAccount',
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
@@ -51,22 +52,19 @@ function userAccountCall(model){
         
              if (body){
                     model.info=JSON.parse(body);
-                    global.emit(callbackRouter,model)
             }
             else if(response){
                     model.info={error:response,
                                 place:"Common Access User Account"}
-                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access User Account"}
-                    global.emit(callbackRouter,model)
             }      
             else{
                     model.info={error:"Error in Common Access [User Account] : Common Access"};
-                    global.emit(callbackRouter,model)
             }
+        global.emit(callbackRouter,model)
         }) 
 }
 

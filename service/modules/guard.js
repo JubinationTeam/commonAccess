@@ -53,11 +53,8 @@ function accessGuard(model){
                                 global.emit(callbackRouter,model)
                                 break;
     }
-    
-    
    
 }
-
 
 function callGuard(model){
      var options     = {

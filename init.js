@@ -57,7 +57,8 @@ const urls={
     'parser':'http://35.154.233.231/Parser',
     'vendor':{
         'thyrocare':'https://shrouded-everglades-23668.herokuapp.com'
-    }
+    },
+    'userAccount':'https://ancient-shore-46511.herokuapp.com'
 }
 
 //instantiating Handler,Service layer and Data Access layer
@@ -70,7 +71,7 @@ function init(){
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
     parserService(globalEmitter,'parser','callbackRouter',urls.parser)
     thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
-    userAccountService(globalEmitter,'userAccount','callbackRouter')   
+    userAccountService(globalEmitter,'userAccount','callbackRouter',urls.userAccount)   
 }
 
 //exports

@@ -43,15 +43,21 @@ function awsRequestFunction(model){
     
     switch(model.req.body.operation){
             
-                case "awsQuery"         :   urlSent=commonUrl;
+                case "awsQuery"         :   model.url=commonUrl;
+                                            makeAwsRequest(model)
                                             break;
 
                 default                 :   model.info="Invalid AWS query Oeration Name"
-                                            model.emit(callbackRouter,model)
+                                            global.emit(callbackRouter,model)
                                             break;
     }
     
-    var options  = {            url     : url,
+    
+    
+}
+
+function makeAwsRequest(model){
+    var options  = {            url     : model.url,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(model.req.body.data)
@@ -60,25 +66,21 @@ function awsRequestFunction(model){
     request(options, function (error, response, body){
             if (body){
                     model.info=JSON.parse(body);
-                    global.emit(callbackRouter,model)
             }
             else if(response){
                     model.info={error:response,
                                 place:"Common Access Module AWS"}
-                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access Module AWS"}
-                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [Module : AWS]  : Common Access"};
-                    global.emit(callbackRouter,model)
             }
+            global.emit(callbackRouter,model)
         })
-    
-}
+                          }
 
 //exports
 module.exports.init=init;
