@@ -35,7 +35,6 @@ function setup(model)
 
 
 function accessGuard(model){
-    console.log("guard")
     switch(model.req.body.operation){
             
         case "create"       :   model.url=url+'/user/create/'
@@ -61,7 +60,6 @@ function accessGuard(model){
 
 
 function callGuard(model){
-    console.log(model.url+":::::::::::::::::::::::::::::::")
      var options     = {
                             url     : model.url,
                             method  : 'POST',
@@ -74,7 +72,6 @@ function callGuard(model){
     request(options, function (error, response, body){
         
              if (body){
-                 console.log(body);
                  try{
                     model.info=JSON.parse(body);
                  }
@@ -83,12 +80,10 @@ function callGuard(model){
                  }
             }
             else if(response){
-                     console.log(urlSent+"response")
                     model.info={error:response,
                                 place:"Common Access Gaurd"}
             }
             else if(error){
-                     console.log(urlSent)
                     model.info={error:error,
                                 place:"Common Access Gaurd"}
             }
