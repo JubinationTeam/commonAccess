@@ -76,6 +76,7 @@ function accessGuard(model){
                     global.emit(callbackRouter,model)
             }
             else if(response){
+                     console.log(urlSent+"response")
                     model.info={error:response,
                                 place:"Common Access Gaurd"}
                     global.emit(callbackRouter,model)
