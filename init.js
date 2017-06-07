@@ -53,7 +53,7 @@ var dataAccessInitModel={
 
 const urls={
     'guard':'https://mysterious-garden-59970.herokuapp.com',
-    'aws':'http://139.59.39.95',
+    'aws':'http://139.59.61.113',
     'parser':'http://35.154.233.231/Parser',
     'vendor':{
         'thyrocare':'https://shrouded-everglades-23668.herokuapp.com'

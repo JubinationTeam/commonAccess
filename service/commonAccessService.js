@@ -33,8 +33,6 @@ function setup(model)
 
 function filterModuleAccessRequest(model){
     
-    console.log("IM IN COMMON ACCESS")
-    
     switch(model.req.body.mod)
             {
                 case "guard"        :   global.emit("guard",model)
@@ -51,7 +49,6 @@ function filterModuleAccessRequest(model){
             
                 case "parser"       :   global.emit("parser",model)
                                         model.emit("parserService",model)
-                                        console.log("IM IN PARSER")
                                         break;
             
                 case "userAccount"  :   global.emit("userAccount",model)

@@ -40,11 +40,9 @@ function parserFactory(model){
 
 function parserRequestFunction(model){
     
-    console.log("PARSER COMMON ACCESS")
     switch(model.req.body.mod){
             
         case "parser" :   firstThyrocareParserRequest(model);
-                          console.log("FIRST THYROCARE REQUEST")
                           break;
 
         default       :   model.info="Invalid Parser Vendor Name"
@@ -57,14 +55,10 @@ function parserRequestFunction(model){
 
 function firstThyrocareParserRequest(model){
     
-    console.log(model.req.body.data)
-    
      var body={
                                 reportUrl:model.req.body.data.pdfUrl,
                                 reportXml:model.req.body.data.xmlUrl 
                             }
-     
-     console.log(body)
      
     var options  = {            url     : url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+model.req.body.data.thyrocareLeadId,
                                 method  : 'POST',
@@ -74,7 +68,6 @@ function firstThyrocareParserRequest(model){
 
     request(options, function (error, response, body){
             if (body){
-                
                             try{
                                 body=JSON.parse(body);
                             }
@@ -84,29 +77,26 @@ function firstThyrocareParserRequest(model){
                 
                     if(body.body=="Success"){
                         model.info=body;
-                        console.log(body+"________")
                         secondThyrocareParserRequest(model)
     //                    global.emit(callbackRouter,model)
                     }
                     else{
                         model.info=body;
-                        global.emit(callbackRouter,model)
                     }
             }
             else if(response){
                     model.info={error:response,
                                 place:"Common Access Module PARSER"}
-                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access Module PARSER"}
-                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [Module : PARSER]  : Common Access"};
-                    global.emit(callbackRouter,model)
             }
+        
+        global.emit(callbackRouter,model)
         })
 }
 
@@ -118,27 +108,27 @@ function secondThyrocareParserRequest(model){
                     }
 
     request(options, function (error, response, body){
-        console.log(response.status)
-        console.log(JSON.parse(body))
+        
             if (body&&response.statusCode==200){
-                        model.info=JSON.parse(body);
-                        global.emit(callbackRouter,model)
-//                    
+                    try{
+                        model.info=JSON.parse(body)
+                    }
+                    catch(err){
+                        model.info={error:err}
+                    }
             }
             else if(response){
                     model.info={error:response,
                                 place:"Common Access Module PARSER"}
-                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access Module PARSER"}
-                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [Module : PARSER]  : Common Access"};
-                    global.emit(callbackRouter,model)
             }
+        global.emit(callbackRouter,model)
         })
     
 }

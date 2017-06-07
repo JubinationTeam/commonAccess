@@ -65,7 +65,12 @@ function makeAwsRequest(model){
 
     request(options, function (error, response, body){
             if (body){
-                    model.info=JSON.parse(body);
+                    try{
+                        model.info=JSON.parse(body)
+                    }
+                    catch(err){
+                        model.info={error:err}
+                    }
             }
             else if(response){
                     model.info={error:response,

@@ -73,8 +73,8 @@ function callGuard(model){
                  try{
                     model.info=JSON.parse(body);
                  }
-                 catch(e){
-                     console.log(e)
+                 catch(err){
+                     model.info={error:err}
                  }
             }
             else if(response){
