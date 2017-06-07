@@ -76,20 +76,20 @@ function firstThyrocareParserRequest(model){
             if (body){
                 
                             try{
-                            body=JSON.parse(body);
+                                body=JSON.parse(body);
                             }
                             catch(err){
                                 console.log(err)
                             }
                 
-                    if(body.body=="success"){
-                        model.info=JSON.parse(body);
-                        console.log(JSON.parse(body)+"________")
+                    if(body.body=="Success"){
+                        model.info=body;
+                        console.log(body+"________")
                         secondThyrocareParserRequest(model)
     //                    global.emit(callbackRouter,model)
                     }
                     else{
-                        model.info=JSON.parse(body);
+                        model.info=body;
                         global.emit(callbackRouter,model)
                     }
             }
@@ -119,15 +119,10 @@ function secondThyrocareParserRequest(model){
 
     request(options, function (error, response, body){
             if (body&&response.status==200){
-//                    if(body.body=="success"){
                         model.info=JSON.parse(body);
                         console.log(JSON.parse(body)+"PPPPPPPPPPPPPP")
                         global.emit(callbackRouter,model)
-//                    }
-//                    else{
-//                        model.info=JSON.parse(body);
-//                        global.emit(callbackRouter,model)
-//                    }
+//                    
             }
             else if(response){
                     model.info={error:response,
