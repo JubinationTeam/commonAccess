@@ -31,7 +31,6 @@ function init(globalEmitter,globalCall,callback,thyrocareServiceUrl){
 
 function setup(model)
 {
-    console.log("IM IN THYROCARE SERVICE FUNCTION")
     model.once("thyrocareService",thyrocareServiceFactory);
 }
 
@@ -44,7 +43,7 @@ function accessVendor(model){
     var urlSent="";
     
     switch(model.req.body.operation){
-                case "postOrder"        :   urlSent=thyrocareUrl.postOrder+"thyrocareBook/"
+                case "postOrder"        :   urlSent=thyrocareUrl.postOrder+"/thyrocareBook/"
                                             break;
             
                 case "parserFirstReq"   :   urlSent='http://35.154.233.231/Parser/pdf/parser/thyrocare/blood/'
