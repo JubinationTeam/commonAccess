@@ -112,7 +112,7 @@ function firstThyrocareParserRequest(model){
 
 
 function secondThyrocareParserRequest(model){
-    var options  = {            url     : url+"/report/json/"+model.req.body.data.mobile+"_"+req.body.data.leadId,
+    var options  = {            url     : url+"/report/json/"+model.req.body.data.mobile+"_"+model.req.body.data.thyrocareLeadId,
                                 method  : 'POST',
                                 headers : headers
                     }
