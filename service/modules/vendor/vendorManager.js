@@ -40,6 +40,7 @@ function accessVendor(model){
     switch(model.req.body.vendor){
                 case "thyrocare"    :   global.emit("thyrocare",model)
                                         model.emit("thyrocareService",model)
+                                        console.log("IM IN THYROCARE SERVICE")
                                         break;
 
                 default             :   model.info={error:"Invalid Third Party Vendor Name - "+model.req.body.mod+": Common Access"}

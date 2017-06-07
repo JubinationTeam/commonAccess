@@ -31,6 +31,7 @@ function init(globalEmitter,globalCall,callback,thyrocareServiceUrl){
 
 function setup(model)
 {
+    console.log("IM IN THYROCARE SERVICE FUNCTION")
     model.once("thyrocareService",thyrocareServiceFactory);
 }
 
