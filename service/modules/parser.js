@@ -122,7 +122,6 @@ function secondThyrocareParserRequest(model){
         console.log(JSON.parse(body))
             if (body&&response.statusCode==200){
                         model.info=JSON.parse(body);
-                        console.log(JSON.parse(body)+"PPPPPPPPPPPPPP")
                         global.emit(callbackRouter,model)
 //                    
             }
