@@ -58,8 +58,6 @@ function accessGuard(model){
 
 function callGuard(model){
     
-    console.log(model.url+"UUUUURRRRRRRRRLLLLLLL")
-    
      var options     = {
                             url     : model.url,
                             method  : 'POST',
@@ -69,6 +67,7 @@ function callGuard(model){
     //console.log(model.req.body.operation)
     //console.log(JSON.stringify(model.req.body.data))
     
+     
     request(options, function (error, response, body){
         
              if (body){
