@@ -60,13 +60,13 @@ function firstThyrocareParserRequest(model){
     console.log(model.req.body.data)
     
      var body={
-                                reportUrl:model.req.body.data.thyrocarePdfUrl,
-                                reportXml:model.req.body.data.thyrocareXmlUrl 
+                                reportUrl:model.req.body.data.pdfUrl,
+                                reportXml:model.req.body.data.xmlUrl 
                             }
      
      console.log(body)
      
-    var options  = {            url     : url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+req.body.data.leadId,
+    var options  = {            url     : url+"/pdf/parser/thyrocare/blood/"+model.req.body.data.mobile+"_"+model.req.body.data.thyrocareLeadId,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(body)
@@ -74,6 +74,14 @@ function firstThyrocareParserRequest(model){
 
     request(options, function (error, response, body){
             if (body){
+                
+                            try{
+                            body=JSON.parse(body);
+                            }
+                            catch(err){
+                                console.log(err)
+                            }
+                
                     if(body.body=="success"){
                         model.info=JSON.parse(body);
                         console.log(JSON.parse(body)+"________")
