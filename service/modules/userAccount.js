@@ -42,7 +42,7 @@ function userAccountCall(model){
     console.log("IM IN USER ACC SERVICE COMMON ACCESS")
     
     var options     = {
-                            url     : commonUrl+'/userAccount/',
+                            url     : commonUrl,
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
