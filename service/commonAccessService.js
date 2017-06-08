@@ -41,7 +41,6 @@ function filterModuleAccessRequest(model){
 
                 case "vendor"       :   global.emit("vendor",model)
                                         model.emit("vendorService",model)
-                                        console.log("IM IN VENDOR")
                                         break;
                                 
                 case "aws"          :   global.emit("aws",model)

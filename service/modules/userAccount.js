@@ -73,6 +73,5 @@ function userAccountCall(model){
         }) 
 }
 
-
 //exports
 module.exports.init=init;
