@@ -39,8 +39,10 @@ function userAccountFactory(model){
 
 function userAccountCall(model){
     
+    console.log("IM IN USER ACC SERVICE COMMON ACCESS")
+    
     var options     = {
-                            url     : commonUrl+'/userAccount',
+                            url     : commonUrl+'/userAccount/',
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
@@ -61,15 +63,18 @@ function userAccountCall(model){
             else if(response){
                     model.info={error:response,
                                 place:"Common Access User Account"}
+                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access User Account"}
+                    global.emit(callbackRouter,model)
             }      
             else{
                     model.info={error:"Error in Common Access [User Account] : Common Access"};
+                    global.emit(callbackRouter,model)
             }
-        global.emit(callbackRouter,model)
+        
         }) 
 }
 

@@ -77,15 +77,18 @@ function accessVendor(model){
             else if(response){
                     model.info={error:response,
                                 place:"Common Access Vendor Thyrocare"}
+                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access Vendor Thyrocare"}
+                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [TP Vendor : Thyrocare]  : Common Access"};
+                    global.emit(callbackRouter,model)
             }
-        global.emit(callbackRouter,model)
+        
         })
     
 }

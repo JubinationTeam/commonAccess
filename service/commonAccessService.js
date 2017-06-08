@@ -53,6 +53,7 @@ function filterModuleAccessRequest(model){
             
                 case "userAccount"  :   global.emit("userAccount",model)
                                         model.emit("userAccountService",model)
+                                        console.log("IM IN USER ACC COMMON ACCESS")
                                         break;
             
                 default             :   model.info={error:"Invalid Module Name - "+model.req.body.mod+": Common Access"}
