@@ -50,7 +50,7 @@ var dataAccessInitModel={
         'globalEmitter':globalEmitter,
         'callName':globalDataAccessCall
     };
-
+  
 const urls={
     'guard':'https://mysterious-garden-59970.herokuapp.com',
     'aws':'http://35.154.233.231:8001/aws',
