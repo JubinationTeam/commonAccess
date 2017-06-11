@@ -47,7 +47,7 @@ function awsRequestFunction(model){
     
     switch(model.req.body.operation){
             
-                case "awsQuery"         :   model.url=commonUrl;
+                case "awsQuery"         :   model.url=url;
                                             makeAwsRequest(model)
                                             break;
 
