@@ -57,7 +57,7 @@ function userAccountCall(model){
              if (body){
                      try{
                         model.info=JSON.parse(body)
-                        console.log(JSON.parse(body)+"+++++++++")
+                        console.log(JSON.stringify(JSON.parse(body))+"+++++++++")
                     }
                     catch(err){
                         model.info={error:err}
