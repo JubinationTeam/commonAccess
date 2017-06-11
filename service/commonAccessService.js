@@ -3,14 +3,13 @@
 //node dependencies
 var request = require('request');
 
-//user defined dependencies
-
 // event names
 const callbackOperation="callbackOperation"
 
 // global event emitter
 var global;
 
+//router variable
 var callbackRouter;
 
 //request headers constant
@@ -26,11 +25,13 @@ function init(globalEmitter,globalCall,callback){
     callbackRouter=callback;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("service",filterModuleAccessRequest);
 }
 
+//function to call the required module 
 function filterModuleAccessRequest(model){
     
     switch(model.req.body.mod)

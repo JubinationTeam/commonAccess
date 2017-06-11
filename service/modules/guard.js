@@ -3,14 +3,13 @@
 //node dependencies
 var request = require('request');
 
-//user defined dependencies
-
 // event names
 const callbackOperation="callbackOperation"
 
 // global event emitter
 var global;
 
+//variables
 var callbackRouter;
 var url;
 
@@ -28,12 +27,13 @@ function init(globalEmitter,globalCall,callback,commonUrl){
     url=commonUrl;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("guardService",accessGuard);
 }
 
-
+//function to filter the request operation
 function accessGuard(model){
     switch(model.req.body.operation){
             
@@ -56,6 +56,7 @@ function accessGuard(model){
    
 }
 
+//function to make a request to the Guard Api
 function callGuard(model){
     
      var options     = {
@@ -64,8 +65,6 @@ function callGuard(model){
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
                     }
-    //console.log(model.req.body.operation)
-    //console.log(JSON.stringify(model.req.body.data))
      
     request(options, function (error, response, body){
         

@@ -3,16 +3,14 @@
 //node dependencies
 var request = require('request');
 
-//user defined dependencies
-
 // event names
 const callbackOperation="callbackOperation"
 
 // global event emitter
 var global;
 
+//variables
 var callbackRouter;
-
 var url;
 
 //request headers constant
@@ -29,11 +27,13 @@ function init(globalEmitter,globalCall,callback,commonUrl){
     url=commonUrl;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("parserService",parserFactory);
 }
 
+//function to create new 'parserRequestFunction' function for each model
 function parserFactory(model){
     new parserRequestFunction(model)
 }
@@ -52,7 +52,7 @@ function parserRequestFunction(model){
     
 }
 
-
+//function to make the first Parser api request
 function firstThyrocareParserRequest(model){
     
      var body={
@@ -100,7 +100,7 @@ function firstThyrocareParserRequest(model){
         })
 }
 
-
+//function to make the second Parser api request
 function secondThyrocareParserRequest(model){
     var options  = {            url     : url+"/report/json/"+model.req.body.data.mobile+"_"+model.req.body.data.thyrocareLeadId,
                                 method  : 'POST',

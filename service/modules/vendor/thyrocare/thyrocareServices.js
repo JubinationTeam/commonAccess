@@ -29,15 +29,19 @@ function init(globalEmitter,globalCall,callback,thyrocareServiceUrl){
     thyrocareUrl=thyrocareServiceUrl;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("thyrocareService",thyrocareServiceFactory);
 }
 
+
+//function to create new 'accessVendor' function for each model
 function thyrocareServiceFactory(model){
     new accessVendor(model)
 }
 
+//function to filter the vendor operation
 function accessVendor(model){
     
     var urlSent="";
@@ -45,13 +49,7 @@ function accessVendor(model){
     switch(model.req.body.operation){
                 case "postOrder"        :   urlSent=thyrocareUrl+"/thyrocareBook/"
                                             break;
-            
-                case "parserFirstReq"   :   urlSent='http://35.154.233.231/Parser/pdf/parser/thyrocare/blood/'
-                                            break;
-            
-                case "parserSecondReq"  :   urlSent='http://35.154.233.231/Parser/report/json/'
-                                            break;
-
+          
                 default                 :   model.info="Invalid Thyrocare Operation Name"
                                             model.emit(callbackRouter,model)
                                             break;

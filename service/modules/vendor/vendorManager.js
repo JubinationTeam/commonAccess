@@ -26,15 +26,18 @@ function init(globalEmitter,globalCall,callback){
     callbackRouter=callback;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("vendorService",factory);
 }
 
+//function to create new 'accessVendor' function for each model
 function factory(model){
     new accessVendor(model)
 }
 
+//function to filter the vendor
 function accessVendor(model){
     
     switch(model.req.body.vendor){

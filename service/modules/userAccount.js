@@ -3,14 +3,13 @@
 //node dependencies
 var request = require('request');
 
-//user defined dependencies
-
 // event names
 const callbackOperation="callbackOperation"
 
 // global event emitter
 var global;
 
+//variables
 var callbackRouter;
 var commonUrl;
 
@@ -28,15 +27,18 @@ function init(globalEmitter,globalCall,callback,url){
     commonUrl=url
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("userAccountService",userAccountFactory);
 }
  
+//function to create new 'userAccountCall' function for each model
 function userAccountFactory(model){
     new userAccountCall(model)
 }
 
+//function to make a call to the User Account Api
 function userAccountCall(model){
     
     console.log("IM IN USER ACC SERVICE COMMON ACCESS")

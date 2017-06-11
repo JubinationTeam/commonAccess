@@ -11,6 +11,7 @@ const callbackOperation="callbackOperation"
 // global event emitter
 var global;
 
+//variables
 var callbackRouter;
 var url;
 
@@ -28,15 +29,18 @@ function init(globalEmitter,globalCall,callback,commonUrl){
     url=commonUrl;
 }
 
+//function to setup model's event listener
 function setup(model)
 {
     model.once("awsService",awsFactory);
 }
 
+//function to create new 'awsFactory' function for each model
 function awsFactory(model){
     new awsRequestFunction(model)
 }
 
+//function to filter the operation
 function awsRequestFunction(model){
     
     var urlSent="";
@@ -51,11 +55,10 @@ function awsRequestFunction(model){
                                             global.emit(callbackRouter,model)
                                             break;
     }
-    
-    
-    
+
 }
 
+//function to make a request to the 'AWS' api
 function makeAwsRequest(model){
     var options  = {            url     : model.url,
                                 method  : 'POST',
