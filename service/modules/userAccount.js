@@ -58,6 +58,7 @@ function userAccountCall(model){
                      try{
                         model.info=JSON.parse(body)
                         console.log(JSON.stringify(JSON.parse(body))+"+++++++++")
+                        global.emit(callbackRouter,model)
                     }
                     catch(err){
                         model.info={error:err}
@@ -77,10 +78,6 @@ function userAccountCall(model){
                     model.info={error:"Error in Common Access [User Account] : Common Access"};
                     global.emit(callbackRouter,model)
             }
-        
-        if(model.info){
-            console.log(model.info)
-        }
         
         }) 
 }
