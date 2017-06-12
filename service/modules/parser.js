@@ -115,7 +115,8 @@ function secondThyrocareParserRequest(model){
                         console.log(JSON.stringify(model.info)+"BBOOOOOODDDDDDYYYYYYY")
                     }
                     catch(err){
-                        model.info={error:err}
+                        model.info={error:err,
+                                place:"Common Access Module PARSER"}
                     }
             }
             else if(response){

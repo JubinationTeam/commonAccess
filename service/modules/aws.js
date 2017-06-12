@@ -72,7 +72,8 @@ function makeAwsRequest(model){
                         model.info=JSON.parse(body)
                     }
                     catch(err){
-                        model.info={error:err}
+                        model.info={error:err,
+                                place:"Common Access Module AWS"}
                     }
             }
             else if(response){
