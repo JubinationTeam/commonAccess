@@ -65,18 +65,22 @@ function userAccountCall(model){
             }
             else if(response){
                     model.info={error:response,
-                                place:"Common Access User Account"}
+                                place:"Common Access User Account : Response"}
                     global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
-                                place:"Common Access User Account"}
+                                place:"Common Access User Account : Error"}
                     global.emit(callbackRouter,model)
             }      
             else{
                     model.info={error:"Error in Common Access [User Account] : Common Access"};
                     global.emit(callbackRouter,model)
             }
+        
+        if(model.info){
+            console.log(model.info)
+        }
         
         }) 
 }
