@@ -82,21 +82,25 @@ function firstThyrocareParserRequest(model){
                     }
                     else{
                         model.info=body;
+                        global.emit(callbackRouter,model)
                     }
             }
             else if(response){
                     model.info={error:response,
                                 place:"Common Access Module PARSER"}
+                    global.emit(callbackRouter,model)
             }
             else if(error){
                     model.info={error:error,
                                 place:"Common Access Module PARSER"}
+                    global.emit(callbackRouter,model)
             }
             else{
                     model.info={error:"Error in Common Access [Module : PARSER]  : Common Access"};
+                    global.emit(callbackRouter,model)
             }
         
-        global.emit(callbackRouter,model)
+        
         })
 }
 
