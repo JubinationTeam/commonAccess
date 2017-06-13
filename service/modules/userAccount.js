@@ -52,12 +52,20 @@ function userAccountCall(model){
         
              if (body){
                      try{
-                        model.info=JSON.parse(body)
-                        console.log(JSON.stringify(model.info))
-                        global.emit(callbackRouter,model)
+                        if(!body.data.error){
+                            model.info=JSON.parse(body)
+                            console.log(JSON.stringify(model.info))
+                            global.emit(callbackRouter,model)
+                        }
+                        else{
+                            model.info={error:body.data.error,
+                                place:"Common Access User Account : Error while parsing data"}}
+                            global.emit(callbackRouter,model)
+                        }
                     }
                     catch(err){
-                        model.info={error:err}
+                        model.info={error:err,
+                                place:"Common Access User Account : Error while parsing data"}}
                         global.emit(callbackRouter,model)
                     }
             }
