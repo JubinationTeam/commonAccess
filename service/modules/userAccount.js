@@ -65,7 +65,7 @@ function userAccountCall(model){
                     }
                     catch(err){
                         model.info={error:err,
-                                place:"Common Access User Account : Error while parsing data"}}
+                                place:"Common Access User Account : Error while parsing data"}
                         global.emit(callbackRouter,model)
                     }
             }
