@@ -53,10 +53,8 @@ function userAccountCall(model){
              if (body){
                      try{
                         body=JSON.parse(body)
-                        if(body.data.error){
-                            console.log(JSON.stringify(model.info))
-                            model.info={error:body.data.error,
-                                place:body.data.place}
+                        if(!body.data.error){
+                            model.info=body
                             global.emit(callbackRouter,model)
                         }
                         else{
