@@ -74,7 +74,7 @@ function callGuard(model){
                  }
                  catch(err){
                      model.info={error:err,
-                                place:"Common Access Module AWS"}
+                                place:"Common Access Module Guard"}
                  }
             }
             else if(response){
@@ -88,6 +88,8 @@ function callGuard(model){
             else{
                     model.info={error:"Error in Common Access [The Guard] : Common Access"};
             }
+            console.log(model.info+"CA Guard body")
+        
             global.emit(callbackRouter,model)
         }) 
 }
