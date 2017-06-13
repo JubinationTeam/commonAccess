@@ -53,7 +53,7 @@ function userAccountCall(model){
              if (body){
                      try{
                         model.info=JSON.parse(body)
-                        console.log(model.info)
+                        console.log(JSON.stringify(model.info))
                         global.emit(callbackRouter,model)
                     }
                     catch(err){
