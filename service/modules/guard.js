@@ -88,8 +88,6 @@ function callGuard(model){
             else{
                     model.info={error:"Error in Common Access [The Guard] : Common Access"};
             }
-            console.log(JSON.stringify(model.info)+"CA Guard body")
-        
             global.emit(callbackRouter,model)
         }) 
 }

@@ -116,7 +116,6 @@ function secondThyrocareParserRequest(model){
             if (body&&response.statusCode==200){
                     try{
                         model.info=JSON.parse(body)
-                        console.log(JSON.stringify(model.info)+"BBOOOOOODDDDDDYYYYYYY")
                     }
                     catch(err){
                         model.info={error:err,
