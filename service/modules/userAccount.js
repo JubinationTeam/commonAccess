@@ -59,7 +59,7 @@ function userAccountCall(model){
                         }
                         else{
                             model.info={error:body.data.error,
-                                place:"Common Access User Account : Error while parsing data"}}
+                                place:"Common Access User Account : Error while parsing data"}
                             global.emit(callbackRouter,model)
                         }
                     }
