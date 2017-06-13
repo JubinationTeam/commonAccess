@@ -72,16 +72,18 @@ function firstThyrocareParserRequest(model){
                                 body=JSON.parse(body);
                             }
                             catch(err){
-                                console.log(err)
+                                model.info={error:err,
+                                            place:"Common Access Module PARSER"}
+                                global.emit(callbackRouter,model)
                             }
                 
                     if(body.body=="Success"){
                         model.info=body;
                         secondThyrocareParserRequest(model)
-    //                    global.emit(callbackRouter,model)
                     }
                     else{
-                        model.info=body;
+                        model.info={error:body,
+                                            place:"Common Access Module PARSER"}
                         global.emit(callbackRouter,model)
                     }
             }

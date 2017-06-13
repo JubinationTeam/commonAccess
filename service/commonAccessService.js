@@ -53,7 +53,6 @@ function filterModuleAccessRequest(model){
                                         break;
             
                 case "userAccount"  :   global.emit("userAccount",model)
-                                        console.log("IM IN USER ACC COMMON ACCESS")
                                         model.emit("userAccountService",model)
                                         break;
             

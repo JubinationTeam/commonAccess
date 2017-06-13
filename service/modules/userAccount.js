@@ -41,27 +41,24 @@ function userAccountFactory(model){
 //function to make a call to the User Account Api
 function userAccountCall(model){
     
-    console.log("IM IN USER ACC SERVICE COMMON ACCESS")
-    
     var options     = {
                             url     : commonUrl,
                             method  : 'POST',
                             headers : headers,
                             body    : JSON.stringify(model.req.body.data)
                     }
-    //console.log(model.req.body.operation)
-    //console.log(JSON.stringify(model.req.body.data))
     
     request(options, function (error, response, body){
         
              if (body){
                      try{
                         model.info=JSON.parse(body)
-                        console.log(JSON.stringify(JSON.parse(body))+"+++++++++")
+                        console.log(model.info)
                         global.emit(callbackRouter,model)
                     }
                     catch(err){
                         model.info={error:err}
+                        global.emit(callbackRouter,model)
                     }
             }
             else if(response){

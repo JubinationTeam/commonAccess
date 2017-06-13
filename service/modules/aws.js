@@ -88,7 +88,6 @@ function makeAwsRequest(model){
                     model.info={error:"Error in Common Access [Module : AWS]  : Common Access"};
             }
         
-            console.log(model.info+"CCCCCAAAAAAA")
             global.emit(callbackRouter,model)
         
         
