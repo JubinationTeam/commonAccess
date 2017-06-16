@@ -69,7 +69,7 @@ function accessVendor(model){
                         model.info=JSON.parse(body)
                     }
                     catch(err){
-                        model.info={error:JSON.parse(err)}
+                        model.info={error:err}
                     }
             }
             else if(response){
