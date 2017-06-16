@@ -86,7 +86,7 @@ function accessVendor(model){
         global.emit(callbackRouter,model)
         
         })
-    
+ console.log(JSON.stringify(model.info))   
 }
 
 //exports
