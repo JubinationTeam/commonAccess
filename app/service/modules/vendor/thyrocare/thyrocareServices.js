@@ -69,8 +69,7 @@ function accessVendor(model){
                         model.info=JSON.parse(body)
                     }
                     catch(err){
-                        console.log(err+"=========")
-                        model.info={error:err}
+                        model.info={error:JSON.parse(err)}
                     }
             }
             else if(response){
@@ -84,7 +83,6 @@ function accessVendor(model){
             else{
                     model.info={error:"Error in Common Access [TP Vendor : Thyrocare]  : Common Access"};
             }
-        console.log(JSON.stringify(model.info))   
         global.emit(callbackRouter,model)
         
         })
