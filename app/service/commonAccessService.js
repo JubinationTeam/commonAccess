@@ -58,7 +58,6 @@ function filterModuleAccessRequest(model){
             
                 case "notification" :   global.emit("notification",model)
                                         model.emit("notificationService",model)
-                                        console.log("IM IN NOTIFICATION CA")
                                         break;   
             
                 default             :   model.info={error:"Invalid Module Name - "+model.req.body.mod+": Common Access"}

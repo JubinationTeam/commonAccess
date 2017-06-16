@@ -32,7 +32,7 @@ function init(globalEmitter,globalCall,callback,commonUrl){
 //function to setup model's event listener
 function setup(model)
 {
-    model.once("notificationService",awsFactory);
+    model.once("notificationService",notificationFactory);
 }
 
 //function to create new 'notificationFactory' function for each model
