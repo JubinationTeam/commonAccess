@@ -57,7 +57,7 @@ function filterNotificationOperation(model){
 //function to make a request to the 'Notification' api
 function makeNotificationRequest(model){
     
-    var options  = {            url     : url,
+    var options  = {            url     : model.url,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(model.req.body.data)

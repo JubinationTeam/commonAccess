@@ -61,7 +61,7 @@ const urls={
     },
 //    'userAccount':'https://ancient-shore-46511.herokuapp.com'
     'userAccount':'https://fierce-hollows-41776.herokuapp.com/userAccount/',
-    'notification':''
+    'notification':'https://gentle-temple-77652.herokuapp.com'
 }
 
 //instantiating Handler,Service layer and Data Access layer
