@@ -44,7 +44,7 @@ function notificationFactory(model){
 function filterNotificationOperation(model){
     
     switch(model.req.body.operation){
-        case "createSet"    :   model.url=url+'/createSet'
+        case "createSet"    :   model.url=url+'/createSet/'
                                 makeNotificationRequest(model)
                                 break;
             
