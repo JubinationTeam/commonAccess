@@ -83,10 +83,10 @@ function accessVendor(model){
             else{
                     model.info={error:"Error in Common Access [TP Vendor : Thyrocare]  : Common Access"};
             }
+        console.log(JSON.stringify(model.info))   
         global.emit(callbackRouter,model)
         
         })
- console.log(JSON.stringify(model.info))   
 }
 
 //exports
