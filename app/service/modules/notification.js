@@ -32,35 +32,32 @@ function init(globalEmitter,globalCall,callback,commonUrl){
 //function to setup model's event listener
 function setup(model)
 {
-    model.once("awsService",awsFactory);
+    model.once("notificationService",awsFactory);
 }
 
-//function to create new 'awsFactory' function for each model
-function awsFactory(model){
-    new awsRequestFunction(model)
+//function to create new 'notificationFactory' function for each model
+function notificationFactory(model){
+    new filterNotificationOperation(model)
 }
 
-//function to filter the operation
-function awsRequestFunction(model){
-    
-    var urlSent="";
+//function to filter Notification Operation type
+function filterNotificationOperation(model){
     
     switch(model.req.body.operation){
+        case "createSet"    :   model.url=url+'/createSet'
+                                makeNotificationRequest(model)
             
-                case "awsQuery"         :   model.url=url;
-                                            makeAwsRequest(model)
-                                            break;
-
-                default                 :   model.info="Invalid AWS query Operation Name"
-                                            global.emit(callbackRouter,model)
-                                            break;
-    }
-
+        default             :   model.info="Invalid Notification Operation Name"
+                                global.emit(callbackRouter,model)
+                                break;
+                                   }
+    
 }
 
-//function to make a request to the 'AWS' api
-function makeAwsRequest(model){
-    var options  = {            url     : model.url,
+//function to make a request to the 'Notification' api
+function makeNotificationRequest(model){
+    
+    var options  = {            url     : url,
                                 method  : 'POST',
                                 headers : headers,
                                 body    : JSON.stringify(model.req.body.data)
@@ -73,19 +70,19 @@ function makeAwsRequest(model){
                     }
                     catch(err){
                         model.info={error:err,
-                                place:"Common Access Module AWS"}
+                                place:"Common Access Module Notification"}
                     }
             }
             else if(response){
                     model.info={error:response,
-                                place:"Common Access Module AWS"}
+                                place:"Common Access Module Notification"}
             }
             else if(error){
                     model.info={error:error,
-                                place:"Common Access Module AWS"}
+                                place:"Common Access Module Notification"}
             }
             else{
-                    model.info={error:"Error in Common Access [Module : AWS]  : Common Access"};
+                    model.info={error:"Error in Common Access [Module : Notification]  : Common Access"};
             }
         
             global.emit(callbackRouter,model)

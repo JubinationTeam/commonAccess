@@ -56,6 +56,10 @@ function filterModuleAccessRequest(model){
                                         model.emit("userAccountService",model)
                                         break;
             
+                case "notification" :   global.emit("notification",model)
+                                        model.emit("notificationService",model)
+                                        break;   
+            
                 default             :   model.info={error:"Invalid Module Name - "+model.req.body.mod+": Common Access"}
                                         global.emit(callbackRouter,model)
                                         break;

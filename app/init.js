@@ -17,6 +17,7 @@ var awsService=require('./service/modules/aws.js').init
 var userAccountService=require('./service/modules/userAccount.js').init
 var parserService=require('./service/modules/parser.js').init
 var thyrocareService=require('./service/modules/vendor/thyrocare/thyrocareServices.js').init
+var notificationService=require('./service/modules/notification.js').init
 
 //global event emitter
 const EventEmitter = require('events');
@@ -59,7 +60,8 @@ const urls={
         'thyrocare':'https://shrouded-everglades-23668.herokuapp.com'
     },
 //    'userAccount':'https://ancient-shore-46511.herokuapp.com'
-    'userAccount':'https://fierce-hollows-41776.herokuapp.com/userAccount/'
+    'userAccount':'https://fierce-hollows-41776.herokuapp.com/userAccount/',
+    'notification':''
 }
 
 //instantiating Handler,Service layer and Data Access layer
@@ -72,7 +74,8 @@ function init(){
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
     parserService(globalEmitter,'parser','callbackRouter',urls.parser)
     thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
-    userAccountService(globalEmitter,'userAccount','callbackRouter',urls.userAccount)   
+    userAccountService(globalEmitter,'userAccount','callbackRouter',urls.userAccount)
+    notificationService(globalEmitter,'notification','callbackRouter',urls.notification)
 }
 
 //exports
