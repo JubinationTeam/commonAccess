@@ -46,11 +46,12 @@ function filterNotificationOperation(model){
     switch(model.req.body.operation){
         case "createSet"    :   model.url=url+'/createSet'
                                 makeNotificationRequest(model)
+                                break;
             
         default             :   model.info="Invalid Notification Operation Name"
                                 global.emit(callbackRouter,model)
                                 break;
-                                   }
+                            }
     
 }
 
