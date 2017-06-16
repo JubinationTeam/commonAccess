@@ -62,7 +62,7 @@ function accessVendor(model){
                     }
 
     request(options, function (error, response, body){
-            console.log(JSON.parse(body))
+//            console.log(JSON.parse(body))
         
             if (body){
                     try{
