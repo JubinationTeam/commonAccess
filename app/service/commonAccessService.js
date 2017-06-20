@@ -52,6 +52,10 @@ function filterModuleAccessRequest(model){
                                         model.emit("parserService",model)
                                         break;
             
+                case "parserReport" :   global.emit("parserReport",model)
+                                        model.emit("parserReportService",model)
+                                        break;
+            
                 case "userAccount"  :   global.emit("userAccount",model)
                                         model.emit("userAccountService",model)
                                         break;

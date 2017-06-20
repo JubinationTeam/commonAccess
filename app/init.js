@@ -16,6 +16,7 @@ var guardService=require('./service/modules/guard.js').init
 var awsService=require('./service/modules/aws.js').init
 var userAccountService=require('./service/modules/userAccount.js').init
 var parserService=require('./service/modules/parser.js').init
+var parserReportService=require('./service/modules/parserReport.js').init
 var thyrocareService=require('./service/modules/vendor/thyrocare/thyrocareServices.js').init
 var notificationService=require('./service/modules/notification.js').init
 
@@ -73,6 +74,7 @@ function init(){
     guardService(globalEmitter,'guard','callbackRouter',urls.guard);
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
     parserService(globalEmitter,'parser','callbackRouter',urls.parser)
+    parserReport(globalEmitter,'parserReport','callbackRouter',urls.parser)
     thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
     userAccountService(globalEmitter,'userAccount','callbackRouter',urls.userAccount)
     notificationService(globalEmitter,'notification','callbackRouter',urls.notification)
