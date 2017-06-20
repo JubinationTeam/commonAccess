@@ -18,10 +18,10 @@ function respond(model){
     }else{
         noOfRequests+=1;
     }
+//    model.res.setHeader('Content-Type', 'application/json'); 
     console.log("served "+noOfRequests+" requests")
-    model.res.setHeader('Content-Type', 'application/json'); 
-    model.res.send(JSON.stringify(model.info), null, 3);
-    model.res.end();
+//    model.res.send(JSON.stringify(model.info), null, 3);
+    model.res.json(model.info);
 }
 
 //exports
