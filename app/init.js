@@ -74,7 +74,7 @@ function init(){
     guardService(globalEmitter,'guard','callbackRouter',urls.guard);
     awsService(globalEmitter,'aws','callbackRouter',urls.aws);
     parserService(globalEmitter,'parser','callbackRouter',urls.parser)
-    parserReport(globalEmitter,'parserReport','callbackRouter',urls.parser)
+    parserReportService(globalEmitter,'parserReport','callbackRouter',urls.parser)
     thyrocareService(globalEmitter,'thyrocare','callbackRouter',urls.vendor.thyrocare)
     userAccountService(globalEmitter,'userAccount','callbackRouter',urls.userAccount)
     notificationService(globalEmitter,'notification','callbackRouter',urls.notification)
