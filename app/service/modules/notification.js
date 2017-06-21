@@ -48,6 +48,11 @@ function filterNotificationOperation(model){
                                 makeNotificationRequest(model)
                                 break;
             
+        case "updateSet"    :   model.url=url+'/updateSet/'
+                                makeNotificationRequest(model)
+                                break;
+            
+            
         case "manager"      :   model.url=url+'/manager/'
                                 makeNotificationRequest(model)
                                 break;
