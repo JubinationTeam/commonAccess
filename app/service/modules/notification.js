@@ -48,7 +48,7 @@ function filterNotificationOperation(model){
                                 makeNotificationRequest(model)
                                 break;
             
-        case "updateSet"    :   model.url=url+'/editSet/'
+        case "editSet"    :   model.url=url+'/editSet/'
                                 makeNotificationRequest(model)
                                 break;
             
