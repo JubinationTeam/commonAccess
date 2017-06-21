@@ -48,6 +48,10 @@ function filterNotificationOperation(model){
                                 makeNotificationRequest(model)
                                 break;
             
+        case "manager"      :   model.url=url+'/manager/'
+                                makeNotificationRequest(model)
+                                break;
+            
         default             :   model.info="Invalid Notification Operation Name"
                                 global.emit(callbackRouter,model)
                                 break;
